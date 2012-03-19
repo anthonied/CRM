@@ -15,7 +15,17 @@ namespace SolExcelCrmSync
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            if(args.Length > 0 )
+            {
+                if (args[0] == "-Talisman")
+                {
+                    Application.Run();
+                }
+            }
+            else
+            {
             Application.Run(new Automation(args));
+            }
         }
     }
 }
