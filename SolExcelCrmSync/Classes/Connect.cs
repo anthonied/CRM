@@ -9,5 +9,6 @@ namespace SolExcelCrmSync.Classes
     public static class Connect
     {
         public static string sConStr = ConfigurationManager.AppSettings["logdb"];
+        public static string sTalismanConStr = ConfigurationManager.AppSettings["talismanSqlConnectionString"];
     }
 }

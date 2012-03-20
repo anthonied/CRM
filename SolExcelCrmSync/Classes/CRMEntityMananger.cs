@@ -12,6 +12,7 @@ using System.Configuration;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Metadata;
 using System.ComponentModel;
+using SolExcelCrmSync.Containers.Account;
 
 namespace SolExcelCrmSync.Classes
 {
@@ -29,7 +30,7 @@ namespace SolExcelCrmSync.Classes
             OrganizationUri = new Uri(ConfigurationManager.AppSettings["OrganizationEndPointURI"]);
         }
 
-        public string updateAccountDetails(List<accountDetails> excelAccountDetails, ref int iAdded, ref int iUpdated, ref List<string> lNewCustomers, BackgroundWorker CustomerBackGroundWorkerBackgroundWorker)
+        public string updateAccountDetails(List<AccountExcel> excelAccountDetails, ref int iAdded, ref int iUpdated, ref List<string> lNewCustomers, BackgroundWorker CustomerBackGroundWorkerBackgroundWorker)
         {
             var iCounter = 0;
             lNewCustomers = new List<string>();
@@ -539,23 +540,4 @@ namespace SolExcelCrmSync.Classes
             return "*quote*" + Attribute + "*quote*";
         }
     }
-
-    public class accountDetails
-    {
-        public string sCustomerNumber { get; set; }
-        public string sAccountName { get; set; }
-        public string sAddressLine1 { get; set; }
-        public string sAddressLine2 { get; set; }
-        public string sAddressLine3 { get; set; }
-        public string sPostCode { get; set; }
-        public string sTelephone { get; set; }
-        public string sVatNumber { get; set; }
-        public string sCountryCode { get; set; }
-        public string sEmail { get; set; }
-        public string sWeb { get; set; }
-        public string sKAM { get; set; }
-    }
-
-
-
 }

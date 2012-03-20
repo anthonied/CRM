@@ -19,7 +19,7 @@ namespace SolExcelCrmSync
             {
                 if (args[0] == "-Talisman")
                 {
-                    Application.Run();
+                    Application.Run(new TalismanImport());
                 }
             }
             else

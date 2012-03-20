@@ -11,6 +11,7 @@ using System.Configuration;
 using System.IO;
 using System.Diagnostics;
 using LINQtoCSV;
+using SolExcelCrmSync.Containers.Account;
 
 namespace SolExcelCrmSync
 {
@@ -135,7 +136,7 @@ namespace SolExcelCrmSync
                 iUpdated = 0;
                 iAdded = 0;
                 CustomerBackGroundWorkerBackgroundWorker.ReportProgress(0, "Reading Excel File...");
-                List<accountDetails> lAccountDetails = ExcelRead.readExcel(sFile);
+                List<AccountExcel> lAccountDetails = ExcelRead.readExcel(sFile);
                 crmEntity.updateAccountDetails(lAccountDetails, ref iAdded, ref iUpdated, ref lNewCustomers, CustomerBackGroundWorkerBackgroundWorker);
                 sTransID = Loging.addTransaction(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), sDirectory, sFile, iUpdated, iAdded, sMethod);
                 CustomerBackGroundWorkerBackgroundWorker.ReportProgress(0, iUpdated.ToString() + " records updated.");

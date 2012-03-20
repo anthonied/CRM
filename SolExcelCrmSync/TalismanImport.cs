@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SolExcelCrmSync.Source;
 
 namespace SolExcelCrmSync
 {
@@ -14,6 +15,14 @@ namespace SolExcelCrmSync
         public TalismanImport()
         {
             InitializeComponent();
+            var a = new IAccountTalisman();
+            
+            dataGridView1.DataSource = a.FillAccountBaseFromSql();
+        }
+
+        private void TalismanImport_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

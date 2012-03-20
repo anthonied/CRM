@@ -6,6 +6,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Configuration;
+using SolExcelCrmSync.Containers.Account;
 
 
 namespace SolExcelCrmSync.Classes
@@ -19,9 +20,9 @@ namespace SolExcelCrmSync.Classes
         Excel._Worksheet objSheet;
         Excel.Range rngLast;
 
-        public List<accountDetails> readExcel(string sExcelPath)
+        public List<AccountExcel> readExcel(string sExcelPath)
         {
-            var lReturn = new List<accountDetails>();
+            var lReturn = new List<AccountExcel>();
             string valueString = string.Empty;
             objExcelApp = new Microsoft.Office.Interop.Excel.Application();
             objBooks = (Excel.Workbooks)objExcelApp.Workbooks;
@@ -45,7 +46,7 @@ namespace SolExcelCrmSync.Classes
             {
                 if (ToStringHandlesNulls(((Excel.Range)objSheet.Cells[rowCounter, 1]).Value) != "")
                 {
-                    var adAccount = new accountDetails();
+                    var adAccount = new AccountExcel();
 
                     adAccount.sCustomerNumber = ToStringHandlesNulls(((Excel.Range)objSheet.Cells[rowCounter, 1]).Value);
                     adAccount.sAccountName = ToStringHandlesNulls(((Excel.Range)objSheet.Cells[rowCounter, 40]).Value);
