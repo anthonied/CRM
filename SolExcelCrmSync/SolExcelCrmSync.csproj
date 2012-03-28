@@ -71,6 +71,7 @@
       <DependentUpon>Automation.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Connect.cs" />
+    <Compile Include="Classes\CRMCredentials.cs" />
     <Compile Include="Classes\CRMEntityMananger.cs" />
     <Compile Include="Classes\ExcelRead.cs" />
     <Compile Include="Classes\Export.cs" />
@@ -78,8 +79,17 @@
     <Compile Include="Classes\Loging.cs" />
     <Compile Include="Containers\Account\AccountBase.cs" />
     <Compile Include="Containers\Account\AccountExcel.cs" />
+    <Compile Include="Containers\BaseContainer.cs" />
+    <Compile Include="Containers\Connections\ConnectionsBase.cs" />
+    <Compile Include="Containers\SecurityRole\SecurityRoleBase.cs" />
+    <Compile Include="Containers\Tasks\TaskBase.cs" />
+    <Compile Include="Containers\User\Marketer.cs" />
+    <Compile Include="Containers\User\UserBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CRMSecurityRoleService.cs" />
+    <Compile Include="Services\CRMCustomerService.cs" />
+    <Compile Include="Services\CRMUserService.cs" />
     <Compile Include="Source\IAccountTalisman.cs" />
     <Compile Include="TalismanImport.cs">
       <SubType>Form</SubType>
@@ -123,9 +133,7 @@
   <ItemGroup>
     <Content Include="Solsage.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

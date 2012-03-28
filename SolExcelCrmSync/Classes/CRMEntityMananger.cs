@@ -18,16 +18,17 @@ namespace SolExcelCrmSync.Classes
 {
     class CRMEntityMananger
     {
-        public ClientCredentials Credentials { get; set; }
-        public Uri OrganizationUri { get; set; }
-
-
+        //public ClientCredentials Credentials { get; set; }
+        //public Uri OrganizationUri { get; set; }
+        public CRMCredentials locCRMCredentials;
+                
         public CRMEntityMananger()
         {
-            Credentials = new ClientCredentials();
-            Credentials.UserName.UserName = "pecs\\crmadmin";
-            Credentials.UserName.Password = "Password%%";
-            OrganizationUri = new Uri(ConfigurationManager.AppSettings["OrganizationEndPointURI"]);
+            //Credentials = new ClientCredentials();
+            //Cedentials.UserName.UserName = "pecs\\crmadmin";
+            //Credentials.UserName.Password = "Password%%";
+            //OrganizationUri = new Uri(ConfigurationManager.AppSettings["OrganizationEndPointURI"]);
+            var locCRMCredentials = new CRMCredentials();
         }
 
         public string updateAccountDetails(List<AccountExcel> excelAccountDetails, ref int iAdded, ref int iUpdated, ref List<string> lNewCustomers, BackgroundWorker CustomerBackGroundWorkerBackgroundWorker)
@@ -35,7 +36,8 @@ namespace SolExcelCrmSync.Classes
             var iCounter = 0;
             lNewCustomers = new List<string>();
             CustomerBackGroundWorkerBackgroundWorker.ReportProgress(0, "Connecting to server...");
-            using (OrganizationServiceProxy serviceProxy = new OrganizationServiceProxy(OrganizationUri, null, Credentials, null))
+            //using (OrganizationServiceProxy serviceProxy = new OrganizationServiceProxy(OrganizationUri, null, Credentials, null))
+            using (OrganizationServiceProxy serviceProxy = new OrganizationServiceProxy(locCRMCredentials.OrganizationUri, null, locCRMCredentials.Credentials, null))
             {
                 CustomerBackGroundWorkerBackgroundWorker.ReportProgress(0, "Successfully connected to the server");
                 IOrganizationService service = (IOrganizationService)serviceProxy;
@@ -141,7 +143,7 @@ namespace SolExcelCrmSync.Classes
         public List<Invoice> ListInvoices(ref BackgroundWorker ActiveBackGroundWorker, DateTime LastExport)
         {
             ActiveBackGroundWorker.ReportProgress(0, "Connecting to server...");
-            using (OrganizationServiceProxy serviceProxy = new OrganizationServiceProxy(OrganizationUri, null, Credentials, null))
+            using (OrganizationServiceProxy serviceProxy = new OrganizationServiceProxy(locCRMCredentials.OrganizationUri, null, locCRMCredentials.Credentials, null))
             {
                 ActiveBackGroundWorker.ReportProgress(0, "Connection establish to server");
                 ActiveBackGroundWorker.ReportProgress(0, "Retrieving invoices...");

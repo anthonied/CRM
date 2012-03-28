@@ -18,7 +18,7 @@ namespace SolExcelCrmSync.Source
             using(var myConnection = new SqlConnection(Connect.sTalismanConStr))
             {
                 myConnection.Open();
-                string sSql = "Select * from existing_clients";
+                string sSql = "Select top 1 * from existing_clients";
                 var Reader = new SqlCommand(sSql, myConnection).ExecuteReader();
                 while (Reader.Read())
                 {
