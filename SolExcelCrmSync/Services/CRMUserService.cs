@@ -12,13 +12,13 @@ namespace SolExcelCrmSync.Services
    public class CRMUserService
     {
        public void getUserFromCRM(UserBase myUser)
-       {
-           var locCRMCredentials = new CRMCredentials();
-           using (OrganizationServiceProxy serviceProxy = new OrganizationServiceProxy(locCRMCredentials.OrganizationUri, null, locCRMCredentials.Credentials, null))
+       {    
+           /*
+           using (OrganizationServiceProxy serviceProxy = new OrganizationServiceProxy(CRMCredentials.OrganizationUri, null, CRMCredentials.Credentials, null))
            {
                IOrganizationService webservice = (IOrganizationService)serviceProxy;
                myUser.FindGuidForObject(webservice);
-           }
+           }*/
        }
 
 

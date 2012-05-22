@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using SolExcelCrmSync.Classes;
 
 namespace SolExcelCrmSync
 {
@@ -14,7 +15,8 @@ namespace SolExcelCrmSync
         static void Main(string[] args)
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetCompatibleTextRenderingDefault(false);                    
+            
             if(args.Length > 0 )
             {
                 if (args[0] == "-Talisman")

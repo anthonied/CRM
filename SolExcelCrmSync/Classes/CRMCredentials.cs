@@ -7,25 +7,20 @@ using System.Configuration;
 
 namespace SolExcelCrmSync.Classes
 {
-    public class CRMCredentials
+    public static class CRMCredentials
     {
-        public ClientCredentials Credentials { get; set; }
-        public ClientCredentials DeviceCredentials { get; set; }
-        public Uri OrganizationUri { get; set; }
 
-        public CRMCredentials()
+
+        public static void SetCredentials(out ClientCredentials Credentials, out Uri OrganizationUri)
         {
             Credentials = new ClientCredentials();
-            Credentials.UserName.UserName = ConfigurationManager.AppSettings["CRMServiceUserName"];
-            Credentials.UserName.Password = ConfigurationManager.AppSettings["CRMPassword"];
+            Credentials.UserName.UserName = @"pecs\\crmadmin";//ConfigurationManager.AppSettings["CRMServiceUserName"];
+            Credentials.UserName.Password = "Password%%";//ConfigurationManager.AppSettings["CRMPassword"];
             OrganizationUri = new Uri(ConfigurationManager.AppSettings["OrganizationEndPointURI"]);
-
+            /*
             DeviceCredentials = new ClientCredentials();
             DeviceCredentials.UserName.UserName = ConfigurationManager.AppSettings["CRMServiceUserName"];
-            DeviceCredentials.UserName.Password = ConfigurationManager.AppSettings["CRMServicePassword"];
-
-        }
-
-        
+            DeviceCredentials.UserName.Password = ConfigurationManager.AppSettings["CRMServicePassword"];*/
+        }        
     }
 }

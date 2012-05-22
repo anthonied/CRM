@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using LINQtoCSV;
 
-namespace SolExcelCrmSync.Classes
+namespace SolExcelCrmSync.Domain
 {
     public class Invoice
     {
@@ -26,13 +26,7 @@ namespace SolExcelCrmSync.Classes
             }
         }
 
-        string _OrderNumber;
-        [CsvColumn(Name= "OrderNumber", FieldIndex=1)]
-        public string OrderNumber
-        {
-            get { return _OrderNumber; }
-            set { _OrderNumber = value; }
-        }
+       
 
         string _InvoiceNumber;
         [CsvColumn(Name = "InvoiceNumber", FieldIndex = 2)]
@@ -219,12 +213,7 @@ namespace SolExcelCrmSync.Classes
             set { _ProductCode = value; }
         }
 
-        private string _ExtendedDescription;
-        public string ExtendedDescription
-        {
-            get { return _ExtendedDescription; }
-            set { _ExtendedDescription = value; }
-        }
+       
 
         private string _TextNarrativeLine1;
         public string TextNarrativeLine1

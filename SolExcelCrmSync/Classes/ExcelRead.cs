@@ -60,6 +60,7 @@ namespace SolExcelCrmSync.Classes
                     adAccount.sEmail = ToStringHandlesNulls(((Excel.Range)objSheet.Cells[rowCounter, 37]).Value);
                     adAccount.sWeb = "";// ToStringHandlesNulls(((Excel.Range)objSheet.Cells[rowCounter, 38]).Value);
                     adAccount.sKAM = ToStringHandlesNulls(((Excel.Range)objSheet.Cells[rowCounter, 31]).Value);
+                    adAccount.sRegion = ToStringHandlesNulls(((Excel.Range)objSheet.Cells[rowCounter, 24]).Value);
                     lReturn.Add(adAccount);
                 }
             }

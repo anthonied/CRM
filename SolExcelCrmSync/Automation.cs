@@ -12,6 +12,8 @@ using System.IO;
 using System.Diagnostics;
 using LINQtoCSV;
 using SolExcelCrmSync.Containers.Account;
+using SolExcelCrmSync.Domain;
+using SolExcelCrmSync.Services;
 
 namespace SolExcelCrmSync
 {
@@ -179,6 +181,7 @@ namespace SolExcelCrmSync
                             FirstLineHasColumnNames = false,
                             EnforceCsvColumnAttribute = true
                         };
+
                         var cc = new CsvContext();
 
                         SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -231,8 +234,8 @@ namespace SolExcelCrmSync
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {            
-            var crmEntity = new CRMEntityMananger();
-            lInvoiceToCsv = crmEntity.ListInvoices(ref backgroundWorkerInvoices, exExportInfo.LastExport);
+            var InvoiceService = new CRMInvoiceService();
+            lInvoiceToCsv = InvoiceService.ListInvoices(ref backgroundWorkerInvoices, exExportInfo.LastExport);
             exExportInfo.InvoicesExportCount = lInvoiceToCsv.Count;
         }
 

@@ -19,6 +19,7 @@ namespace SolExcelCrmSync.Containers.Account
         public string sPostCode { get; set; }
         public string sTelephone { get; set; }        
         public string sEmail { get; set; }
+        public string sRegion { get; set; }
         public Guid guidAccountId { get; set; }
 
         public AccountBase()
@@ -27,6 +28,7 @@ namespace SolExcelCrmSync.Containers.Account
             this.sCrmEntityGuidFieldName = "accountid";
             this.sCrmFilterAttributeName = "accountnumber";
         }
+
 
 
         public void addAccountToCRM(IOrganizationService myCRMServiceProxy)

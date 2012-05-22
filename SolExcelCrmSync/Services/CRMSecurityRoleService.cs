@@ -12,17 +12,15 @@ namespace SolExcelCrmSync.Services
    public class CRMSecurityRoleService
     {
        public void getSecurityRoleFromCRM(SecurityRoleBase mySecurityRole)
-       {
-           var locCRMCredentials = new CRMCredentials();
-           using (OrganizationServiceProxy serviceProxy = new OrganizationServiceProxy(locCRMCredentials.OrganizationUri, null, locCRMCredentials.Credentials, null))
+       {         
+           /*
+           using (OrganizationServiceProxy serviceProxy = new OrganizationServiceProxy(CRMCredentials.OrganizationUri, null, CRMCredentials.Credentials, null))
            {
                IOrganizationService webservice = (IOrganizationService)serviceProxy;
                mySecurityRole.getSecurityRoleGuidBySecurityRoleName(webservice);
                
-           }
-
+           }*/
        }
-
 
        public IOrganizationService serviceProxy { get; set; }
     }

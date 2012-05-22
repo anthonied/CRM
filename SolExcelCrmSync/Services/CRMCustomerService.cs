@@ -12,17 +12,18 @@ namespace SolExcelCrmSync.Services
     public class CRMCustomerService
     {
         public void importFromSqlSolCRM(List<AccountBase> myCustomers)
-        {
-            var locCRMCredentials = new CRMCredentials();
-            using (OrganizationServiceProxy serviceProxy = new OrganizationServiceProxy(locCRMCredentials.OrganizationUri, null, locCRMCredentials.Credentials, null))
+        {          
+            /*
+            using (OrganizationServiceProxy serviceProxy = new OrganizationServiceProxy(CRMCredentials.OrganizationUri, null, CRMCredentials.Credentials, null))
             {
                 IOrganizationService webservice = (IOrganizationService)serviceProxy;
                 foreach (var Customer in myCustomers)
                 {
                     Customer.addAccountToCRM(webservice);
                 }
-            }
+            }*/
         }
+
 
         
     }
