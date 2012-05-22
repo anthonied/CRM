@@ -200,8 +200,8 @@ namespace SolExcelCrmSync.Services
                                 if (myProductEntity.Contains("new_earnedby_invoice") && myProductEntity.Contains("new_jobnumberinvoiceproduct"))
                                 {
                                     string _earnby = GetOptionSetValueLabel(service, myProductEntity, "new_earnedby_invoice", (OptionSetValue)myProductEntity["new_earnedby_invoice"]).PadRight(4,' ');
-                                    _earnby += GetOptionSetValueLabel(service, myProductEntity, "new_jobnumberinvoiceproduct", (OptionSetValue)myProductEntity["new_jobnumberinvoiceproduct"]).PadRight(4, ' ');
-                                    myInvoiceDetail.JobNumber_EarnBy = _earnby;
+                                    _earnby += myProductEntity["new_jobnumberinvoiceproduct"].ToString().PadRight(4, ' ');
+                                    myInvoiceDetail.JobNumber_EarnBy = _earnby.Substring(0,8);
                                 }
                                 else
                                     myInvoiceDetail.JobNumber_EarnBy = "\"";
