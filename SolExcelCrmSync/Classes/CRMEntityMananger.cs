@@ -22,14 +22,14 @@ namespace SolExcelCrmSync.Classes
         public ClientCredentials Credentials { get; set; }
         public Uri OrganizationUri { get; set; }
         //public CRMCredentials locCRMCredentials;
-                
+
         public CRMEntityMananger()
         {
-          ////  Credentials = new ClientCredentials();
-          ////  Credentials.UserName.UserName = "pecs\\crmadmin";
-          ////  Credentials.UserName.Password = "Password%%";
-          ////  OrganizationUri = new Uri(ConfigurationManager.AppSettings["OrganizationEndPointURI"]);
-          //////  locCRMCredentials = new CRMCredentials();
+            Credentials = new ClientCredentials();
+            Credentials.UserName.UserName = "pecs\\crmadmin";
+            Credentials.UserName.Password = "Password%%";
+            OrganizationUri = new Uri(ConfigurationManager.AppSettings["OrganizationEndPointURI"]);
+            //////  locCRMCredentials = new CRMCredentials();
         }
 
         public string updateAccountDetails(List<AccountExcel> excelAccountDetails, ref int iAdded, ref int iUpdated, ref List<string> lNewCustomers, BackgroundWorker CustomerBackGroundWorkerBackgroundWorker)
@@ -47,11 +47,11 @@ namespace SolExcelCrmSync.Classes
                 iCounter = 0;
                 foreach (var theAccount in excelAccountDetails)
                 {
-                    iCounter++;
+
                     CustomerBackGroundWorkerBackgroundWorker.ReportProgress(iCounter);
                     if (theAccount.sCustomerNumber != "")
                     {
-                        
+
                         QueryExpression myAccountQuery = new QueryExpression
                         {
                             EntityName = "account",
@@ -74,7 +74,7 @@ namespace SolExcelCrmSync.Classes
 
                         foreach (var myEntity in entities)
                         {
-
+                            iCounter++;
                             myEntity["new_customernumber"] = theAccount.sCustomerNumber;
                             myEntity["name"] = theAccount.sAccountName;
                             myEntity["address1_line1"] = theAccount.sAddressLine1;
@@ -129,8 +129,8 @@ namespace SolExcelCrmSync.Classes
                             myNewEntity["address1_country"] = theAccount.sCountryCode;
                             myNewEntity["emailaddress1"] = theAccount.sEmail;
                             myNewEntity["websiteurl"] = theAccount.sWeb;
-                            myNewEntity["Address1_StateProvince"] = theAccount.sRegion;
-                            myNewEntity["Address2_StateProvince"] = theAccount.sRegion;
+                            myNewEntity["address1_stateorprovince"] = theAccount.sRegion;
+                            myNewEntity["address2_stateorprovince"] = theAccount.sRegion;
                             myNewEntity["new_kam"] = theAccount.sKAM;
                             service.Create(myNewEntity);
                             iAdded++;
@@ -176,6 +176,6 @@ namespace SolExcelCrmSync.Classes
 
 
 
-       
+
     }
 }
