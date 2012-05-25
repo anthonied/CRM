@@ -30,7 +30,7 @@ namespace SolExcelCrmSync.Services
         public List<Invoice> ListInvoices(ref BackgroundWorker ActiveBackGroundWorker, DateTime LastExport)
         {
             ActiveBackGroundWorker.ReportProgress(0, "Connecting to server...");
-            
+
             using (OrganizationServiceProxy serviceProxy = new OrganizationServiceProxy(OrganizationUri, null, Credentials, null))
             {
                 ActiveBackGroundWorker.ReportProgress(0, "Connection establish to server");
@@ -199,9 +199,9 @@ namespace SolExcelCrmSync.Services
 
                                 if (myProductEntity.Contains("new_earnedby_invoice") && myProductEntity.Contains("new_jobnumberinvoiceproduct"))
                                 {
-                                    string _earnby = GetOptionSetValueLabel(service, myProductEntity, "new_earnedby_invoice", (OptionSetValue)myProductEntity["new_earnedby_invoice"]).PadRight(4,' ');
+                                    string _earnby = GetOptionSetValueLabel(service, myProductEntity, "new_earnedby_invoice", (OptionSetValue)myProductEntity["new_earnedby_invoice"]).PadRight(4, ' ');
                                     _earnby += myProductEntity["new_jobnumberinvoiceproduct"].ToString().PadRight(4, ' ');
-                                    myInvoiceDetail.JobNumber_EarnBy = _earnby.Substring(0,8);
+
                                 }
                                 else
                                     myInvoiceDetail.JobNumber_EarnBy = "\"";
@@ -245,7 +245,7 @@ namespace SolExcelCrmSync.Services
 
             }
         }
-        
+
         private void GetProductInfoNumberFromId(Guid productid, ref IOrganizationService service, ref string productnumber, ref string new_sigaccref)
         {
             QueryExpression myProductIDQuery = new QueryExpression
@@ -289,7 +289,7 @@ namespace SolExcelCrmSync.Services
                 else
                     sReturn += "\"";
                 sReturn += ",";
-              
+
                 if (DetailToBeConverted.TextNarrativeLine1 != null)
                     sReturn += DetailToBeConverted.TextNarrativeLine1;
                 sReturn += ",";

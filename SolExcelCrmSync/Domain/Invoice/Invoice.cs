@@ -9,10 +9,10 @@ namespace SolExcelCrmSync.Domain
     public class Invoice
     {
         string _DebtorAccountNumber;
-        [CsvColumn(Name = "DebtorAccountNumber", FieldIndex=0)]        
+        [CsvColumn(Name = "DebtorAccountNumber", FieldIndex = 0)]
         public string DebtorAccountNumber
         {
-            
+
             get { return _DebtorAccountNumber; }
             set
             {
@@ -26,12 +26,12 @@ namespace SolExcelCrmSync.Domain
             }
         }
 
-       
+
 
         string _InvoiceNumber;
-        [CsvColumn(Name = "InvoiceNumber", FieldIndex = 2)]
+        [CsvColumn(Name = "InvoiceNumber", FieldIndex = 1)]
         public string InvoiceNumber
-        {             
+        {
             get { return _InvoiceNumber; }
             set
             {
@@ -45,7 +45,7 @@ namespace SolExcelCrmSync.Domain
         }
 
         DateTime _InvoiceDate;
-        [CsvColumn(Name="InvoiceDate",  FieldIndex=3, OutputFormat="ddMMyy")]
+        [CsvColumn(Name = "InvoiceDate", FieldIndex = 2, OutputFormat = "ddMMyy")]
         public DateTime InvoiceDate
         {
             get { return _InvoiceDate; }
@@ -53,7 +53,7 @@ namespace SolExcelCrmSync.Domain
         }
 
         string _CustomerReference;
-        [CsvColumn(Name = "CustomerReference", FieldIndex = 4)]
+        [CsvColumn(Name = "CustomerReference", FieldIndex = 3)]
         public string CustomerReference
         {
             get { return _CustomerReference; }
@@ -69,14 +69,15 @@ namespace SolExcelCrmSync.Domain
         }
 
         string _JobNumber;
-       
-        public string JobNumber        {
+
+        public string JobNumber
+        {
             get { return _JobNumber; }
             set { _JobNumber = value; }
         }
 
         string _Consultant;
-        [CsvColumn(Name = "Consultant", FieldIndex = 5)]
+        [CsvColumn(Name = "Consultant", FieldIndex = 4)]
         public string Consultant
         {
             get { return _Consultant; }
@@ -84,7 +85,7 @@ namespace SolExcelCrmSync.Domain
         }
 
         string _ShippingMethod;
-        [CsvColumn(Name = "ShippingMethod", FieldIndex = 6)]
+        [CsvColumn(Name = "ShippingMethod", FieldIndex = 5)]
         public string ShippingMethod
         {
             get { return _ShippingMethod; }
@@ -100,7 +101,7 @@ namespace SolExcelCrmSync.Domain
         }
 
         string _DeliveryLine1;
-        [CsvColumn(Name = "DeliveryLine1", FieldIndex = 7)]
+        [CsvColumn(Name = "DeliveryLine1", FieldIndex = 6)]
         public string DeliveryLine1
         {
             get { return _DeliveryLine1; }
@@ -111,12 +112,12 @@ namespace SolExcelCrmSync.Domain
                 {
                     value = value.Substring(0, maxlength);
                 }
-                _DeliveryLine1 = value; 
+                _DeliveryLine1 = value;
             }
         }
 
         string _DeliveryLine2;
-        [CsvColumn(Name = "DeliveryLine2", FieldIndex = 8)]
+        [CsvColumn(Name = "DeliveryLine2", FieldIndex = 7)]
         public string DeliveryLine2
         {
             get { return _DeliveryLine2; }
@@ -124,7 +125,7 @@ namespace SolExcelCrmSync.Domain
         }
 
         string _DeliveryLine3;
-        [CsvColumn(Name = "DeliveryLine3", FieldIndex = 9)]
+        [CsvColumn(Name = "DeliveryLine3", FieldIndex = 8)]
         public string DeliveryLine3
         {
             get { return _DeliveryLine3; }
@@ -140,7 +141,7 @@ namespace SolExcelCrmSync.Domain
         }
 
         string _DeliveryLine4;
-        [CsvColumn(Name = "DeliveryLine4", FieldIndex =10)]
+        [CsvColumn(Name = "DeliveryLine4", FieldIndex = 9)]
         public string DeliveryLine4
         {
             get { return _DeliveryLine4; }
@@ -156,7 +157,7 @@ namespace SolExcelCrmSync.Domain
         }
 
         string _SpecialInstructions1;
-        [CsvColumn(Name = "SpecialInstructions1", FieldIndex = 11)]
+        [CsvColumn(Name = "SpecialInstructions1", FieldIndex = 10)]
         public string SpecialInstructions1
         {
             get { return _SpecialInstructions1; }
@@ -164,7 +165,7 @@ namespace SolExcelCrmSync.Domain
         }
 
         string _SpecialInstructions2;
-        [CsvColumn(Name = "SpecialInstructions2", FieldIndex = 12)]
+        [CsvColumn(Name = "SpecialInstructions2", FieldIndex = 11)]
         public string SpecialInstructions2
         {
             get { return _SpecialInstructions2; }
@@ -180,7 +181,7 @@ namespace SolExcelCrmSync.Domain
         }
 
         string _Product_String;
-        [CsvColumn(Name = "ProductString", FieldIndex = 13)]
+        [CsvColumn(Name = "ProductString", FieldIndex = 12)]
         public string Product_String
         {
             get { return _Product_String; }
@@ -195,17 +196,19 @@ namespace SolExcelCrmSync.Domain
             get { return _Invoice_Product; }
             set { _Invoice_Product = value; }
         }
-       
-       /* string _StatusCode;        
-        public string StatusCode
-        {
-            get { return _StatusCode; }
-            set { _StatusCode = value; }
-        }*/
+
+        /* string _StatusCode;        
+         public string StatusCode
+         {
+             get { return _StatusCode; }
+             set { _StatusCode = value; }
+         }*/
     }
 
     public class Invoice_detail
     {
+        private int _QuoteAsterixIdentifier = 14;
+
         private string _ProductCode;
         public string ProductCode
         {
@@ -213,20 +216,20 @@ namespace SolExcelCrmSync.Domain
             set { _ProductCode = value; }
         }
 
-       
+
 
         private string _TextNarrativeLine1;
         public string TextNarrativeLine1
         {
             get { return _TextNarrativeLine1; }
-            set 
+            set
             {
                 int maxlength = 60;
-                if (value.Length > maxlength)
+                if (value.Length > maxlength + _QuoteAsterixIdentifier)
                 {
-                    value = value.Substring(0, maxlength);
+                    value = value.Substring(0, maxlength + _QuoteAsterixIdentifier);
                 }
-                _TextNarrativeLine1 = value; 
+                _TextNarrativeLine1 = value;
             }
         }
 
@@ -237,11 +240,11 @@ namespace SolExcelCrmSync.Domain
             set
             {
                 int maxlength = 60;
-                if (value.Length > maxlength)
+                if (value.Length > maxlength + _QuoteAsterixIdentifier)
                 {
-                    value = value.Substring(0, maxlength);
+                    value = value.Substring(0, maxlength + _QuoteAsterixIdentifier);
                 }
-                _TextNarrativeLine2 = value; 
+                _TextNarrativeLine2 = value;
             }
         }
 
@@ -252,11 +255,11 @@ namespace SolExcelCrmSync.Domain
             set
             {
                 int maxlength = 60;
-                if (value.Length > maxlength)
+                if (value.Length > maxlength + _QuoteAsterixIdentifier)
                 {
-                    value = value.Substring(0, maxlength);
+                    value = value.Substring(0, maxlength + _QuoteAsterixIdentifier);
                 }
-                _TextNarrativeLine3 = value; 
+                _TextNarrativeLine3 = value;
             }
         }
 
@@ -264,12 +267,12 @@ namespace SolExcelCrmSync.Domain
         public string TextNarrativeLine4
         {
             get { return _TextNarrativeLine4; }
-            set 
+            set
             {
                 int maxlength = 60;
-                if (value.Length > maxlength)
+                if (value.Length > maxlength + _QuoteAsterixIdentifier)
                 {
-                    value = value.Substring(0, maxlength);
+                    value = value.Substring(0, maxlength + _QuoteAsterixIdentifier);
                 }
                 _TextNarrativeLine4 = value;
             }
@@ -279,12 +282,12 @@ namespace SolExcelCrmSync.Domain
         public string TextNarrativeLine5
         {
             get { return _TextNarrativeLine5; }
-            set 
+            set
             {
                 int maxlength = 60;
-                if (value.Length > maxlength)
+                if (value.Length > maxlength + _QuoteAsterixIdentifier)
                 {
-                    value = value.Substring(0, maxlength);
+                    value = value.Substring(0, maxlength + _QuoteAsterixIdentifier);
                 }
                 _TextNarrativeLine5 = value;
             }
@@ -297,11 +300,11 @@ namespace SolExcelCrmSync.Domain
             set
             {
                 int maxlength = 60;
-                if (value.Length > maxlength)
+                if (value.Length > maxlength + _QuoteAsterixIdentifier)
                 {
-                    value = value.Substring(0, maxlength);
+                    value = value.Substring(0, maxlength + _QuoteAsterixIdentifier);
                 }
-                _TextNarrativeLine6 = value; 
+                _TextNarrativeLine6 = value;
             }
         }
 
@@ -312,11 +315,11 @@ namespace SolExcelCrmSync.Domain
             set
             {
                 int maxlength = 60;
-                if (value.Length > maxlength)
+                if (value.Length > maxlength + _QuoteAsterixIdentifier)
                 {
-                    value = value.Substring(0, maxlength);
+                    value = value.Substring(0, maxlength + _QuoteAsterixIdentifier);
                 }
-                _TextNarrativeLine7 = value; 
+                _TextNarrativeLine7 = value;
             }
         }
 
