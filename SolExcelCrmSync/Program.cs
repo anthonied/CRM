@@ -15,18 +15,22 @@ namespace SolExcelCrmSync
         static void Main(string[] args)
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);                    
-            
-            if(args.Length > 0 )
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            if (args.Length > 0)
             {
                 if (args[0] == "-Talisman")
                 {
                     Application.Run(new TalismanImport());
                 }
+                else
+                {
+                    Application.Run(new Automation(args));
+                }
             }
             else
             {
-            Application.Run(new Automation(args));
+                Application.Run(new Automation(args));
             }
         }
     }
